@@ -1,1 +1,17 @@
-<p>houses works!</p>
+<div class="houses-container">
+    <div class="input-container">
+        <input type="text" placeholder="Search">
+    </div>
+    <mat-card>
+        <table>
+            <tr>
+                <th>Name of the house</th>
+                <th>Amount of members</th>
+            </tr>
+            <tr *ngFor="let house of allHouses[0], index as i">
+                <td>{{allHouses[0][i].name}}</td>
+                <td>{{allHouses[0][i].members.length}}</td>
+            </tr>
+        </table>
+    </mat-card>
+</div>

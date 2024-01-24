@@ -11,6 +11,7 @@ import { PersonsComponent } from './persons/persons.component';
 import { QuotesComponent } from './quotes/quotes.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { QuotesComponent } from './quotes/quotes.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
