@@ -30,6 +30,11 @@ mat-card-content {
             cursor: pointer;
         }
     }
+}
 
-    
+.router-container {
+    height: calc(100vh - 70px);
+    max-height: 100%;
+    width: 100vw;
+    max-width: 100%;
 }

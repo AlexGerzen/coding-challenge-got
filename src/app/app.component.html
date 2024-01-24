@@ -1,10 +1,13 @@
 <mat-card>
   <mat-card-content>
-      <div class="game-of-thrones">Game of Thrones</div>
-      <div class="links-container">
-        <div>Houses</div>
-        <div>People</div>
-        <div>Quotes</div>
-      </div>
+    <div [routerLink]="['']" class="game-of-thrones">Game of Thrones</div>
+    <div class="links-container">
+      <div [routerLink]="['/houses']">Houses</div>
+      <div [routerLink]="['/persons']">Persons</div>
+      <div [routerLink]="['/quotes']">Quotes</div>
+    </div>
   </mat-card-content>
 </mat-card>
+<div class="router-container">
+  <router-outlet></router-outlet>
+</div>
