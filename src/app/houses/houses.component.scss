@@ -9,17 +9,34 @@ mat-card {
     margin-top: 20px;
 
     table {
-        border-spacing: 5px 10px;
+        margin: 20px 20px;
+        // border-spacing: 0 30px;
+        border-collapse: collapse;
+    }
+
+    th {
+        font-size: 32px;
+        text-decoration: underline #0e1a20;
+        color: #0e1a20;
+        font-weight: bold;
+        // margin-bottom: 20px;
+        padding-bottom: 50px;
     }
 
     td {
         text-align: center;
-        border: 0.5px solid #0e1a20;
+        border-bottom: 0.5px solid #0e1a20;
+        height: 50px;
+        font-size: 16px;
     }
 
     tr {
-        margin-bottom: 20px;
-        padding-bottom: 20px;
+
+        &:hover {
+            background-color: #0e1a20;
+            cursor: pointer;
+            color: #d4e6f0;
+        }
     }
 }
 
