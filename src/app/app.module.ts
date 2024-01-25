@@ -9,6 +9,11 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { HousesComponent } from './houses/houses.component';
 import { PersonsComponent } from './persons/persons.component';
 import { QuotesComponent } from './quotes/quotes.component';
+import { DialogHousesComponent } from './dialog-houses/dialog-houses.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 
 
@@ -18,13 +23,16 @@ import { QuotesComponent } from './quotes/quotes.component';
     FrontPageComponent,
     HousesComponent,
     PersonsComponent,
-    QuotesComponent
+    QuotesComponent,
+    DialogHousesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,45 @@
+mat-card {
+    height: 600px;
+    width: 450px;
+}
+
+mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+mat-card-subtitle {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+mat-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 64px;
+
+    div {
+        width: 100%;
+        font-size: 24px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid black;
+        padding-bottom: 12px;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+           text-decoration: underline;
+        }
+    }
+}
+
+mat-card-actions {  
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

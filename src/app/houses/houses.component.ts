@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DialogHousesComponent } from '../dialog-houses/dialog-houses.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-houses',
@@ -11,12 +13,12 @@ export class HousesComponent {
 
   allHouses = [];
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.getAllHouses();
   }
 
   /**
-   * This function will use the url an fetch the data
+   * This function will use the url an fetch the data. It throws an error when it is unsuccessful.
    */
   async getAllHouses() {
     await fetch(this.url)
@@ -33,5 +35,18 @@ export class HousesComponent {
       .catch(error => {
         console.error('API request error:', error);
       });
+  }
+
+  /**
+   * This function will open a subpage with the members for the clicked house. It opens the component "DialogHousesComponent" and hands over the data of the clicked house.
+   * 
+   * @param currentIndex This is the current index of the clicked house
+   */
+  openDialog(currentIndex) {
+    this.dialog.open(DialogHousesComponent, {
+      data: {
+        house: this.allHouses[0][currentIndex],
+      },
+    });
   }
 }
