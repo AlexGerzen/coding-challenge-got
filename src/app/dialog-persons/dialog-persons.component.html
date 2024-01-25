@@ -1,1 +1,34 @@
-<p>dialog-persons works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            {{personInfo.person.name}}
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div class="category-container">
+            <div class="category">Associated house:</div>
+            <div class="category-info">{{personInfo.person.house && personInfo.person.house.name ?
+                personInfo.person.house.name : 'None'}}</div>
+        </div>
+        <div class="category-container">
+            <div class="quote-header-container">
+                <div class="category">Quotes:</div>
+                <div>Amount of quotes: {{personInfo.person.quotes.length}}</div>
+            </div>
+            <div class="quotes-container">
+                <div class="category-info">"{{firstQuote}}"</div>
+                <div *ngIf="checkForMoreThanOneQuote()" class="category-info">"{{secondQuote}}"</div>
+            </div>
+            <div class="button-container">
+                <button (click)="setQuotes()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>shuffle</mat-icon>
+                </button>
+            </div>
+
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="closeDialog()" mat-raised-button>Close</button>
+    </mat-card-actions>
+</mat-card>

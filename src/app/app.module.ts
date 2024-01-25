@@ -13,6 +13,8 @@ import { DialogHousesComponent } from './dialog-houses/dialog-houses.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { DialogPersonsComponent } from './dialog-persons/dialog-persons.component';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 
@@ -34,7 +36,8 @@ import { DialogPersonsComponent } from './dialog-persons/dialog-persons.componen
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

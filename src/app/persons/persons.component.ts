@@ -33,8 +33,6 @@ export class PersonsComponent {
       .catch(error => {
         console.error('API request error:', error);
       });
-      console.log(this.allPersons);
-      
   }
 
   /**

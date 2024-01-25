@@ -1,0 +1,48 @@
+mat-card {
+    height: 600px;
+    width: 450px;
+}
+
+mat-card-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+mat-card-content {
+    height: 100%;
+    padding-bottom: 64px;
+}
+
+mat-card-actions {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.category-container {
+    padding-top: 32px;
+}
+
+.category {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.category-info {
+    font-size: 18px;
+    padding-top: 16px;
+}
+
+.quote-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+}

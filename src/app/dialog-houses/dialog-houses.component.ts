@@ -13,6 +13,9 @@ export class DialogHousesComponent {
     this.allMembers = data;
   }
 
+  /**
+   * This function is used to close the subpage
+   */
   closeDialog() {
     this.dialogRef.close();
   }
