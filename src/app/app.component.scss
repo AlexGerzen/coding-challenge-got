@@ -17,6 +17,10 @@ mat-card-content {
 .game-of-thrones {
     font-weight: bold;
     font-size: 32px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .links-container {

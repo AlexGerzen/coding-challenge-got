@@ -1,0 +1,48 @@
+.quotes-container {
+    height: 100%;
+    max-height: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 32px;
+}
+
+mat-card-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+mat-card-actions {
+    justify-content: center;
+    position: absolute;
+    bottom: 32px;
+    left: calc(50% - 28px);
+
+    button {
+        background-color: #0e1a20;
+    }
+}
+
+mat-card-content {
+    height: calc(100% - 134px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote {
+    padding-top: 32px;
+}
+
+.character {
+    font-size: 28px;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.character-quote {
+    font-size: 20px;
+    padding-top: 12px;
+}
