@@ -12,6 +12,7 @@ export class HousesComponent {
   search: string = "";
 
   allHouses = [];
+  filteredHouses: any = [];
 
   constructor(public dialog: MatDialog) {
     this.getAllHouses();
@@ -35,6 +36,7 @@ export class HousesComponent {
       .catch(error => {
         console.error('API request error:', error);
       });
+      this.filter();
   }
 
   /**
@@ -44,9 +46,22 @@ export class HousesComponent {
    */
   openDialog(currentIndex) {
     this.dialog.open(DialogHousesComponent, {
-      data: {
-        house: this.allHouses[0][currentIndex],
-      },
+      data:  this.allHouses[0][currentIndex],
     });
+  }
+
+  /**
+   * This function is used to filter the names of the houses after the searchterm
+   */
+  filter() {
+    const searchTerm = this.search.toLowerCase();
+  
+    if (searchTerm === '') {
+      this.filteredHouses = this.allHouses[0];
+    } else {
+      this.filteredHouses = this.allHouses[0].filter(house =>
+        house.name && house.name.toLowerCase().includes(searchTerm)
+      );
+    }
   }
 }

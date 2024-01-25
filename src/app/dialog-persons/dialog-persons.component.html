@@ -1,20 +1,20 @@
 <mat-card>
     <mat-card-header>
         <mat-card-title>
-            {{personInfo.person.name}}
+            {{personInfo.name}}
         </mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
         <div class="category-container">
             <div class="category">Associated house:</div>
-            <div class="category-info">{{personInfo.person.house && personInfo.person.house.name ?
-                personInfo.person.house.name : 'None'}}</div>
+            <div (click)="openDialog()" *ngIf="personInfo" class="category-info link">{{personInfo.house && personInfo.house.name ?
+                personInfo.house.name : 'None'}}</div>
         </div>
         <div class="category-container">
             <div class="quote-header-container">
-                <div class="category">Quotes:</div>
-                <div>Amount of quotes: {{personInfo.person.quotes.length}}</div>
+                <div [routerLink]="['/quotes']" (click)="closeDialog()" class="category link">Quotes:</div>
+                <div *ngIf="personInfo && personInfo.quotes">Amount of quotes: {{personInfo.quotes.length}}</div>
             </div>
             <div class="quotes-container">
                 <div class="category-info">"{{firstQuote}}"</div>
@@ -25,7 +25,6 @@
                     <mat-icon>shuffle</mat-icon>
                 </button>
             </div>
-
         </div>
     </mat-card-content>
     <mat-card-actions>

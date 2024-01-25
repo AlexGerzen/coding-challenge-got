@@ -9,7 +9,9 @@ import { DialogPersonsComponent } from '../dialog-persons/dialog-persons.compone
 })
 export class PersonsComponent {
   url: string = "https://api.gameofthronesquotes.xyz/v1/characters";
-  allPersons: any = []
+  allPersons: any = [];
+  filteredPersons: any = [];
+  search: string = '';
 
   constructor(public dialog: MatDialog) {
     this.getAllPersons();
@@ -33,6 +35,7 @@ export class PersonsComponent {
       .catch(error => {
         console.error('API request error:', error);
       });
+      this.filter();
   }
 
   /**
@@ -42,10 +45,24 @@ export class PersonsComponent {
    */
   openDialog(currentIndex) {
     this.dialog.open(DialogPersonsComponent, {
-      data: {
-        person: this.allPersons[0][currentIndex],
-      },
+      data: this.allPersons[0][currentIndex],
+      
     });
   }
 
+  /**
+   * This function is used to filter the names of the persons after the searchterm
+   */
+  filter() {
+    const searchTerm = this.search.toLowerCase();
+  
+    if (searchTerm === '') {
+      this.filteredPersons = this.allPersons[0];
+    } else {
+      this.filteredPersons = this.allPersons[0].filter(person =>
+        (person.name && person.name.toLowerCase().includes(searchTerm)) ||
+        (person.house && person.house.name && person.house.name.toLowerCase().includes(searchTerm))
+      );
+    }
+  }
 }

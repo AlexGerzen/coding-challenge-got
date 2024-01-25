@@ -4,7 +4,7 @@
     </mat-card-title>
     <mat-card-content>
         <div class="quote" *ngFor="let quote of fiveRandomQuotes[0], index as i">
-            <div class="character">{{fiveRandomQuotes[0][i].character.name}}:</div>
+            <div (click)="openDialog(i)" class="character">{{fiveRandomQuotes[0][i].character.name}}:</div>
             <div class="character-quote">{{fiveRandomQuotes[0][i].sentence}}</div>
         </div>
     </mat-card-content>

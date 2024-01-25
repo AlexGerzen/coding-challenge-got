@@ -14,6 +14,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { DialogPersonsComponent } from './dialog-persons/dialog-persons.component';
 import {MatIconModule} from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -37,7 +38,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

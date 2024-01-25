@@ -1,0 +1,33 @@
+.frontpage-container {
+    height: calc(100%);
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 70px;
+    padding-bottom: 140px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0e1a20;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    gap: 16px;
+    align-items: center;
+
+    button {
+        width: 400px;
+        height: 100px;
+        background-color: #0e1a20;
+        color: #d4e6f0;
+        font-size: 32px;
+    }
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DialogPersonsComponent } from '../dialog-persons/dialog-persons.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-quotes',
@@ -9,7 +11,7 @@ export class QuotesComponent {
   url: string = "https://api.gameofthronesquotes.xyz/v1/random/5";
   fiveRandomQuotes: any = [];
 
-  constructor() {
+  constructor(public dialog: MatDialog,) {
     this.getFiveRandomQuotes();
   }
 
@@ -32,5 +34,16 @@ export class QuotesComponent {
       .catch(error => {
         console.error('API request error:', error);
       });
+  }
+
+  /**
+   * This function will open the dialog with the information about the character
+   * 
+   * @param currentIndex THis is the current index of the person
+   */
+  openDialog(currentIndex) {
+    this.dialog.open(DialogPersonsComponent, {
+      data: "https://api.gameofthronesquotes.xyz/v1/character/" + this.fiveRandomQuotes[0][currentIndex].character.slug,
+    });
   }
 }

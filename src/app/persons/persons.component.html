@@ -1,6 +1,6 @@
 <div class="persons-container">
     <div class="input-container">
-        <input type="text" placeholder="Search">
+        <input [(ngModel)]="search" (input)="filter()" type="text" placeholder="Search">
     </div>
     <mat-card class="custom-scrollbar">
         <table>
@@ -8,9 +8,9 @@
                 <th>Character</th>
                 <th>Associated house</th>
             </tr>
-            <tr (click)="openDialog(i)" *ngFor="let person of allPersons[0], index as i">
-                <td>{{allPersons[0][i].name}}</td>
-                <td>{{allPersons[0][i].house && allPersons[0][i].house.name ? allPersons[0][i].house.name : 'None'}}</td>
+            <tr (click)="openDialog(i)" *ngFor="let person of filteredPersons, index as i">
+                <td>{{filteredPersons[i].name}}</td>
+                <td>{{filteredPersons[i].house && filteredPersons[i].house.name ? filteredPersons[i].house.name : 'None'}}</td>
             </tr>
         </table>
     </mat-card>

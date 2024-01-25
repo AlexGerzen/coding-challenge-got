@@ -1,13 +1,18 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>
-            {{allMembers.house.name}}
+        <mat-card-title *ngIf="allMembers">
+            {{allMembers.name}}
         </mat-card-title>
         <mat-card-subtitle>Members:</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
-        <div *ngFor="let member of allMembers.house.members, index as i">{{allMembers.house.members[i].name}}</div>
+        <div *ngIf="allMembers">
+            <div (click)="openDialog(i)" *ngFor="let member of allMembers.members, index as i">
+                {{allMembers.members[i].name}}
+            </div>
+        </div>
+
     </mat-card-content>
     <mat-card-actions>
         <button (click)="closeDialog()" mat-raised-button>Close</button>

@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogHousesComponent } from '../dialog-houses/dialog-houses.component';
 
 @Component({
   selector: 'app-dialog-persons',
@@ -7,14 +8,49 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./dialog-persons.component.scss']
 })
 export class DialogPersonsComponent {
-  personInfo: any;
+  personInfo: any = [];
   firstQuote: string = "";
   secondQuote: string = "";
+  url: string = "";
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<DialogPersonsComponent>) {
-    this.personInfo = data;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialog: MatDialog, public dialogRef: MatDialogRef<DialogPersonsComponent>) {
+    this.checkTypeOfData()
+  }
+
+  /**
+   * This function is used to check the type of data
+   */
+  checkTypeOfData() {
+    if (typeof this.data === "string") {
+      this.url = this.data;
+      this.getPerson();
+    } else {
+      this.personInfo = this.data;
+      this.setQuotes();
+    }
+  }
+
+  /**
+   * This function is used to fetch the information about the person
+   */
+  async getPerson() {
+    await fetch(this.url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error loading API data. Status code: ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then(personInfo => {
+        this.personInfo = personInfo[0];
+
+      })
+      .catch(error => {
+        console.error('API request error:', error);
+      });
+
     this.setQuotes();
-    
   }
 
   /**
@@ -23,19 +59,24 @@ export class DialogPersonsComponent {
    * @returns This function returns "true" if the person has more than one quote, else it returns false
    */
   checkForMoreThanOneQuote() {
-    return this.personInfo.person.quotes.length > 1;
+    if (this.personInfo.quotes) {
+      return this.personInfo.quotes.length > 1;
+    } else {
+      return false
+    }
+
   }
 
   /**
    * This function will set the quotes. If there is only one quote it will be set, if there are more than one quotes, a function is called to show two random quotes
    */
   setQuotes() {
-    if(!this.checkForMoreThanOneQuote()) {
-      this.firstQuote = this.personInfo.person.quotes[0];
+    if (!this.checkForMoreThanOneQuote()) {
+      this.firstQuote = this.personInfo.quotes[0];
     } else {
       [this.firstQuote, this.secondQuote] = this.twoRandomQuotes();
     }
-    
+
   }
 
   /**
@@ -44,14 +85,14 @@ export class DialogPersonsComponent {
    * @returns It returns two random quotes
    */
   twoRandomQuotes() {
-    let firstQuote = Math.floor(Math.random() * this.personInfo.person.quotes.length);
-    let secondQuote = Math.floor(Math.random() * this.personInfo.person.quotes.length);
+    let firstQuote = Math.floor(Math.random() * this.personInfo.quotes.length);
+    let secondQuote = Math.floor(Math.random() * this.personInfo.quotes.length);
 
     while (firstQuote === secondQuote) {
-      secondQuote = Math.floor(Math.random() * this.personInfo.person.quotes.length);
+      secondQuote = Math.floor(Math.random() * this.personInfo.quotes.length);
     }
 
-    return [this.personInfo.person.quotes[firstQuote], this.personInfo.person.quotes[secondQuote]];
+    return [this.personInfo.quotes[firstQuote], this.personInfo.quotes[secondQuote]];
   }
 
   /**
@@ -59,6 +100,21 @@ export class DialogPersonsComponent {
    */
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  /**
+   * This function is used to open the info about the clicked house
+   * 
+   * @returns It returns the function if this component was opened through a dialog
+   */
+  openDialog() {
+    if (typeof this.data === "string") {
+      return
+    } else {
+      this.dialog.open(DialogHousesComponent, {
+        data: "https://api.gameofthronesquotes.xyz/v1/house/" + this.personInfo.house.slug,
+      });
+    }
   }
 
 }
