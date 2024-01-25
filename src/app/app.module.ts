@@ -12,6 +12,7 @@ import { QuotesComponent } from './quotes/quotes.component';
 import { DialogHousesComponent } from './dialog-houses/dialog-houses.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { DialogPersonsComponent } from './dialog-persons/dialog-persons.component';
 
 
 
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     HousesComponent,
     PersonsComponent,
     QuotesComponent,
-    DialogHousesComponent
+    DialogHousesComponent,
+    DialogPersonsComponent
   ],
   imports: [
     BrowserModule,

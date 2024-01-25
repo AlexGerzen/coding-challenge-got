@@ -1,1 +1,17 @@
-<p>persons works!</p>
+<div class="persons-container">
+    <div class="input-container">
+        <input type="text" placeholder="Search">
+    </div>
+    <mat-card class="custom-scrollbar">
+        <table>
+            <tr>
+                <th>Character</th>
+                <th>Associated house</th>
+            </tr>
+            <tr (click)="openDialog(i)" *ngFor="let person of allPersons[0], index as i">
+                <td>{{allPersons[0][i].name}}</td>
+                <td>{{allPersons[0][i].house && allPersons[0][i].house.name ? allPersons[0][i].house.name : 'None'}}</td>
+            </tr>
+        </table>
+    </mat-card>
+</div>
